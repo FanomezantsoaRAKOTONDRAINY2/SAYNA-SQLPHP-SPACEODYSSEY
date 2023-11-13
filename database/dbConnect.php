@@ -2,7 +2,7 @@
 // Connexion à la base de données (à remplacer par vos informations)
 $servername = "localhost";
 $username = "root";
-$password = "Josefa@124578";
+$password = "";
 $dbname = "spaceodyssey";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -23,30 +23,40 @@ if (isset($_POST['submit_planete'])) {
 
         $sql = "INSERT INTO Planetes (nom, circonference, distance_terre, documentation) VALUES ('$nom_planete', $circonference, $distance_terre, '$documentation')";
     }
-    // Update
-    elseif ($_POST['operation_planete'] === 'update') {
-        $planete_id = $_POST['planete_id'];
-        $nom_planete = $_POST['nom_planete'];
-        $circonference = $_POST['circonference'];
-        $distance_terre = $_POST['distance_terre'];
-        $documentation = $_POST['documentation'];
 
-        $sql = "UPDATE Planetes SET nom='$nom_planete', circonference=$circonference, distance_terre=$distance_terre, documentation='$documentation' WHERE id=$planete_id";
-    }
     // Delete
     elseif ($_POST['operation_planete'] === 'delete') {
         $planete_id = $_POST['planete_id'];
         $sql = "DELETE FROM Planetes WHERE id=$planete_id";
     }
 
+    // Modification : Utiliser la même logique pour l'exécution de la requête SQL
     if ($conn->query($sql) === TRUE) {
-//        echo "Opération Planète réussie";
+        echo "Opération Planète réussie"; // Vous pouvez afficher un message de succès si nécessaire
     } else {
         echo "Erreur : " . $conn->error;
     }
 }
 
 
+// Modification de la planete
+
+if (isset($_POST['submit_edit_planete'])) {
+    $planete_id = $_POST['planet_id'];
+    $nom_planete = $_POST['edit_nom'];
+    $circonference = $_POST['edit_circonference'];
+    $distance_terre = $_POST['edit_distance'];
+    $documentation = $_POST['edit_documentation'];
+
+    // Perform the update operation
+    $sql = "UPDATE Planetes SET nom='$nom_planete', circonference=$circonference, distance_terre=$distance_terre, documentation='$documentation' WHERE id=$planete_id";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Modification Planète réussie"; // Success message
+    } else {
+        echo "Erreur : " . $conn->error; // Error message
+    }
+}
 
 
 // Opération CRUD pour les Astronautes
@@ -134,3 +144,6 @@ $result_astronautes = $conn->query("SELECT * FROM Astronautes");
 
 $conn->close();
 ?>
+
+
+

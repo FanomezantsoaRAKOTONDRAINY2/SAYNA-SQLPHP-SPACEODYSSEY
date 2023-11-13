@@ -6,7 +6,7 @@ include "../html/liens.php"; // navbar
 include "../database/dbConnect.php";
 ?>
 
-<div class="content-wrapper"">
+<div class="content-wrapper"  style="background-color: #35394B">
     <div class="card card-primary">
         <div class="card-header">
             <h3 class="card-title">FORMULAIRE DES PLANETTES</h3>
@@ -97,31 +97,75 @@ include "../database/dbConnect.php";
                                     </tr>
                                 <?php endwhile; ?>
 
-
-
-
                                 </tbody>
                             </table>
 
-
-
+                                    <!-- Modal for Editing -->
+                            <div id="editModal" class="modal" style="display: none;">
+                                <div class="modal-content">
+                                    <span class="close" onclick="closeEditModal()">&times;</span>
+                                    <h2>Modifier les détails de la planète</h2>
+                                    <form id="editForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                                        <input type="hidden" id="editPlanetId" name="planet_id">
+                                        
+                                        <label for="editNom">Nom:</label>
+                                        <input type="text" id="editNom" name="edit_nom">
+                                        
+                                        <label for="editCirconference">Circonférence:</label>
+                                        <input type="text" id="editCirconference" name="edit_circonference">
+                                        
+                                        <label for="editDistance">Distance:</label>
+                                        <input type="text" id="editDistance" name="edit_distance">
+                                        
+                                        <label for="editDocumentation">Documentation:</label>
+                                        <input type="text" id="editDocumentation" name="edit_documentation">
+                                        
+                                        <button type="submit" name="submit_edit_planete">Enregistrer les modifications</button>
+                                    </form>
+                                </div>
+                            </div>                      
                         </div>
+                        
                     </div>
                 </div>
             </div>
 
         </div>
-
-
-
         <!-- /.card-header -->
         <!-- form start -->
 
     </div>
 </div>
 
-
-
 <?php
 include "../html/footer.php"
 ?>
+
+
+<script>
+
+function openEditModal(id, nom, circonference, distance, documentation) {
+    document.getElementById('editPlanetId').value = id;
+    document.getElementById('editNom').value = nom;
+    document.getElementById('editCirconference').value = circonference;
+    document.getElementById('editDistance').value = distance;
+    document.getElementById('editDocumentation').value = documentation;
+
+    document.getElementById('editModal').style.display = 'block';
+}
+
+// Function to close the edit modal
+function closeEditModal() {
+    document.getElementById('editModal').style.display = 'none';
+}
+
+// Close the modal if the user clicks outside of it
+window.onclick = function(event) {
+    if (event.target == document.getElementById('editModal')) {
+        closeEditModal();
+    }
+};
+</script>
+
+
+

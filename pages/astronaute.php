@@ -8,7 +8,7 @@ include "../database/dbConnect.php";
 ?>
 
 
-<div class="content-wrapper">
+<div class="content-wrapper" style="background-color: #35394B">
     <div class="card card-primary">
         <div class="card-header">
             <h3 class="card-title">FORMULAIRE DES ASTRONAUTES</h3>
