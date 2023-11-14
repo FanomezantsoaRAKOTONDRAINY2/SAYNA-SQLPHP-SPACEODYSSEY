@@ -2,17 +2,14 @@
     include('pages/header.php');
     include "pages/menuGauche.php";
     include 'database/dbConnect.php';
-
-
 ?>
-
-                    <!--Main page-->
+                <!--Main page-->
 
     <div class="content-wrapper"  style="background-color: #35394B">
 
         <div class="row">
             <div class="col-lg-3 col-6">
-                <!-- small box -->
+               
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h1><span style="font-size: 50px"><?php echo $total_rows ?></span></h1>
@@ -24,14 +21,11 @@
                     </div>
                     <a href="pages/planete.php" class="small-box-footer">Vers planetes<i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
+            </div>        
+            <div class="col-lg-3 col-6">          
                 <div class="small-box bg-success">
                     <div class="inner">
                         <h1><span style="font-size: 50px"><?php echo $total_rows1 ?></span></h1>
-
                         <p>Astronautes</p>
                     </div>
                     <div class="icon">
@@ -40,9 +34,7 @@
                     <a href="#" class="small-box-footer">Vers astronautes <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-            <!-- ./col -->
             <div class="col-lg-3 col-6">
-                <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
                         <h3><span style="font-size: 50px">0</span></h3>
@@ -55,9 +47,7 @@
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-            <!-- ./col -->
             <div class="col-lg-3 col-6">
-                <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
                         <h3><span style="font-size: 50px">0</span></h3>
@@ -70,20 +60,8 @@
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-            <!-- ./col -->
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
-
-
-
     </div>
-
-
-
-
 <?php
 include "pages/footer.php";
 ?>

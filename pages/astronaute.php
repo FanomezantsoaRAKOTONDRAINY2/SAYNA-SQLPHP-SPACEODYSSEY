@@ -97,41 +97,55 @@ include "../database/dbConnect.php";
                                                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" style="display:inline;">
                                                         <input type="hidden" name="operation_astronaute" value="delete">
                                                         <input type="hidden" name="astronaute_id" value="<?php echo $row['id']; ?>">
-                                                        <button type="submit" name="submit_astronaute">Supprimer</button>
+                                                        <button type="submit" name="submit_astronaute"> <i class="fas fa-trash-alt"></i></button>
                                                     </form>
-                                                    <a href="#" onclick="openEditModal('<?php echo $row['id']; ?>', '<?php echo $row['nom']; ?>', '<?php echo $row['etat_sante']; ?>', '<?php echo $row['taille']; ?>', '<?php echo $row['poids']; ?>')">Modifier</a>
+                                                    <a href="#" onclick="openEditModal('<?php echo $row['id']; ?>', '<?php echo $row['nom']; ?>', '<?php echo $row['etat_sante']; ?>', '<?php echo $row['taille']; ?>', '<?php echo $row['poids']; ?>')"><i class="fas fa-edit"></i></a>
                                                 </td>
                                             </tr>
                                         <?php endwhile; ?>
 
-
-
-
                                         </tbody>
                                     </table>
-
-
-
                                 </div>
+                                <!-- fenetre de la modification  -->
+                                <div class="modal" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="editModalLabel">Modifier Astronaute</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="editForm" action="" method="post">
+                                                    <input type="hidden" name="operation_astronaute" value="update">
+                                                    <input type="hidden" name="astronaute_id" id="edit_astronaute_id" value="">
+                                                    <label for="edit_nom">Nom:</label>
+                                                    <input type="text" class="form-control" id="edit_nom" name="edit_nom" required>
+                                                    <label for="edit_etat_sante">État de santé:</label>
+                                                    <input type="text" class="form-control" id="edit_etat_sante" name="edit_etat_sante" required>
+                                                    <label for="edit_taille">Taille:</label>
+                                                    <input type="text" class="form-control" id="edit_taille" name="edit_taille" required>
+                                                    <label for="edit_poids">Poids:</label>
+                                                    <input type="text" class="form-control" id="edit_poids" name="edit_poids" required>
+                                                    <button type="submit" class="btn btn-primary" name="submit_edit_astronaute">Enregistrer les modifications</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>                       
                             </div>
                         </div>
                     </div>
-
                 </div>
-
-
-
-                <!-- /.card-header -->
-                <!-- form start -->
-
             </div>
-
-
-
     </div>
 
 
-
+<br>
+<br>    
 <?php
 include "../html/footer.php"
 ?>
+

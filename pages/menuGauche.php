@@ -42,7 +42,7 @@
                 <p>Astronaute</p>
             </a>
         </li>
-        <li class="nav-item">
+         <li class="nav-item">
             <a href="./pages/missions.php" class="nav-link">
                 <p>Mission</p>
             </a>
@@ -51,10 +51,10 @@
             <a href="./pages/vaisseau.php" class="nav-link">
                 <p>Vaisseau</p>
             </a>
-        </li>
+        </li> 
         <li class="nav-item">
             <a href=" ./pages/api.php" class="nav-link">
-                <p>Image jour</p>
+                <p>Image du jour</p>
             </a>
         </li>
     </ul>

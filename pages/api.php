@@ -1,91 +1,10 @@
 <!doctype html>
 <html>
 <head>
-    <title>APOD</title>
+    <title>SAYNA-SQLPHP-SPACEODYSSEY</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="./css/nasa.css">
-    <style>
-        #speed-container {
-            position: fixed;
-            right: 2em;
-            bottom: 0;
-        }
-        h1, h2, #start {
-            color: white;
-        }
-        table {
-            background-color: white;
-            margin-bottom: 2em;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-        }
-
-        .navbar {
-            background-color: #333;
-            overflow: hidden;
-        }
-
-        .navbar a {
-            float: left;
-            display: block;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        .navbar a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-
-        .navbar a.active {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .navbar .icon {
-            display: none;
-        }
-
-        @media screen and (max-width: 600px) {
-            .navbar a {
-                float: none;
-                display: block;
-                width: 100%;
-                text-align: left;
-            }
-
-            .navbar.responsive {
-                position: relative;
-            }
-
-            .navbar.responsive .icon {
-                display: block;
-                position: absolute;
-                left: 0;
-                top: 0;
-            }
-
-            .navbar.responsive a {
-                display: none;
-            }
-
-            .navbar.responsive a.icon {
-                float: left;
-                display: block;
-            }
-
-            .navbar.responsive a.icon:hover {
-                background-color: #ddd;
-                color: black;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../plugins/nasa/nasa.css">
 </head>
 <body>
 
@@ -99,8 +18,6 @@
             &#9776;
         </a>
     </div>
-
-
 <div class="container">
     <main>
         <section>
@@ -147,19 +64,6 @@
     <label for="speed-slider">Travel Speed</label>
     <input value="20" type="range" id="speed-slider" step="1" min="0" max="100" />
 </div>
-
-
-    <script>
-        function toggleNavbar() {
-            var x = document.getElementById("myNavbar");
-            if (x.className === "navbar") {
-                x.className += " responsive";
-            } else {
-                x.className = "navbar";
-            }
-        }
-    </script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="../dist/js/nasa.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script>

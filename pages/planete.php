@@ -59,10 +59,7 @@ include "../database/dbConnect.php";
 
             </ul>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
+        
 
         <div><h1 STYLE="text-align: center">
                 LISTES DES PLANETES EXISTANTES
@@ -90,82 +87,55 @@ include "../database/dbConnect.php";
                                             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" style="display:inline;">
                                                 <input type="hidden" name="operation_planete" value="delete">
                                                 <input type="hidden" name="planete_id" value="<?php echo $row['id']; ?>">
-                                                <button type="submit" name="submit_planete">Supprimer</button>
+                                                <button type="submit" name="submit_planete"> <i class="fas fa-trash-alt"></i> </button>
                                             </form>
-                                            <a href="#" onclick="openEditModal('<?php echo $row['id']; ?>', '<?php echo $row['nom']; ?>', '<?php echo $row['circonference']; ?>', '<?php echo $row['distance_terre']; ?>', '<?php echo $row['documentation']; ?>')">Modifier</a>
+                                            <a href="#" onclick="openEditModal('<?php echo $row['id']; ?>', '<?php echo $row['nom']; ?>', '<?php echo $row['circonference']; ?>', '<?php echo $row['distance_terre']; ?>', '<?php echo $row['documentation']; ?>')"><i class="fas fa-edit"></i></a>
                                         </td>
                                     </tr>
                                 <?php endwhile; ?>
 
                                 </tbody>
-                            </table>
-
-                                    <!-- Modal for Editing -->
-                            <div id="editModal" class="modal" style="display: none;">
-                                <div class="modal-content">
-                                    <span class="close" onclick="closeEditModal()">&times;</span>
-                                    <h2>Modifier les détails de la planète</h2>
-                                    <form id="editForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                                        <input type="hidden" id="editPlanetId" name="planet_id">
-                                        
-                                        <label for="editNom">Nom:</label>
-                                        <input type="text" id="editNom" name="edit_nom">
-                                        
-                                        <label for="editCirconference">Circonférence:</label>
-                                        <input type="text" id="editCirconference" name="edit_circonference">
-                                        
-                                        <label for="editDistance">Distance:</label>
-                                        <input type="text" id="editDistance" name="edit_distance">
-                                        
-                                        <label for="editDocumentation">Documentation:</label>
-                                        <input type="text" id="editDocumentation" name="edit_documentation">
-                                        
-                                        <button type="submit" name="submit_edit_planete">Enregistrer les modifications</button>
-                                    </form>
-                                </div>
-                            </div>                      
+                            </table>      
                         </div>
-                        
+                                       <!-- Fenetre de modifiction -->
+                            <div class="modal" id="editModal" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Modifier Planète</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="editForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                                        <input type="hidden" name="operation_planete" value="edit">
+                                        <input type="hidden" name="planete_id" id="edit_planete_id">
+                                        <label for="edit_nom">Nom:</label>
+                                        <input type="text" name="edit_nom" id="edit_nom" class="form-control" required>
+                                        <label for="edit_circonference">Circonférence:</label>
+                                        <input type="text" name="edit_circonference" id="edit_circonference" class="form-control" required>
+                                        <label for="edit_distance">Distance:</label>
+                                        <input type="text" name="edit_distance" id="edit_distance" class="form-control" required>
+                                        <label for="edit_documentation">Documentation:</label>
+                                        <textarea name="edit_documentation" id="edit_documentation" class="form-control" required></textarea>
+                                        <button type="submit" name="submit_edit_planete">Enregistrer les modifications</button>
+                                        </form>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>
-
         </div>
-        <!-- /.card-header -->
-        <!-- form start -->
-
     </div>
 </div>
-
+                             
 <?php
 include "../html/footer.php"
 ?>
 
-
-<script>
-
-function openEditModal(id, nom, circonference, distance, documentation) {
-    document.getElementById('editPlanetId').value = id;
-    document.getElementById('editNom').value = nom;
-    document.getElementById('editCirconference').value = circonference;
-    document.getElementById('editDistance').value = distance;
-    document.getElementById('editDocumentation').value = documentation;
-
-    document.getElementById('editModal').style.display = 'block';
-}
-
-// Function to close the edit modal
-function closeEditModal() {
-    document.getElementById('editModal').style.display = 'none';
-}
-
-// Close the modal if the user clicks outside of it
-window.onclick = function(event) {
-    if (event.target == document.getElementById('editModal')) {
-        closeEditModal();
-    }
-};
-</script>
 
 
 

@@ -1,7 +1,14 @@
 const apiKey = "OfzgBPXMt4Ao8IW5gKBFIePSEzUtHzhsIQV5M8oS";
 const apodUrl = "https://api.nasa.gov/planetary/apod";
 const afeedUrl = "https://api.nasa.gov/neo/rest/v1/feed";
-
+function toggleNavbar() {
+    var x = document.getElementById("myNavbar");
+    if (x.className === "navbar") {
+        x.className += " responsive";
+    } else {
+        x.className = "navbar";
+    }
+}
 
 function handleAFeedData({element_count, near_earth_objects}, afeedElement, afeedTable){
     
@@ -100,7 +107,6 @@ function contentLoaded(){
     })
 
 }
-
 
 function handleError(error){
     console.warn(error.message);
