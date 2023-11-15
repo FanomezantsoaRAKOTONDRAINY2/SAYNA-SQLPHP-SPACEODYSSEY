@@ -23,7 +23,6 @@ if (isset($_POST['submit_planete'])) {
 
         $sql = "INSERT INTO Planetes (nom, circonference, distance_terre, documentation) VALUES ('$nom_planete', $circonference, $distance_terre, '$documentation')";
     }
-
     // Delete
     elseif ($_POST['operation_planete'] === 'delete') {
         $planete_id = $_POST['planete_id'];
@@ -37,7 +36,6 @@ if (isset($_POST['submit_planete'])) {
         echo "Erreur : " . $conn->error;
     }
 }
-
 // Modification de la planete
 if (isset($_POST['submit_edit_planete'])) {
     $planete_id = $_POST['planete_id']; // Correction ici
@@ -57,8 +55,35 @@ if (isset($_POST['submit_edit_planete'])) {
 }
 
 
+
+
+
 // Opération CRUD pour les Astronautes
 
+// Opération CRUD pour les Astronautes
+if (isset($_POST['submit_astronaute'])) {
+    // Create
+    if ($_POST['operation_astronaute'] === 'create') {
+        $nom_astronaute = $_POST['nom_astronaute'];
+        $etat_sante = $_POST['etat_sante'];
+        $taille_astronaute = $_POST['taille_astronaute'];
+        $poids_astronaute = $_POST['poids_astronaute'];
+
+        $sql = "INSERT INTO Astronautes (nom, etat_sante, taille, poids) VALUES ('$nom_astronaute', '$etat_sante', $taille_astronaute, $poids_astronaute)";
+    }
+    // Delete
+    elseif ($_POST['operation_astronaute'] === 'delete') {
+        $astronaute_id = $_POST['astronaute_id'];
+        $sql = "DELETE FROM Astronautes WHERE id=$astronaute_id";
+    }
+
+    if ($conn->query($sql) === TRUE) {
+//        echo "Opération Astronaute réussie";
+    } else {
+        echo "Erreur : " . $conn->error;
+    }
+}
+// modification de la astronaute
 if (isset($_POST['submit_edit_astronaute'])) {
 
     // Récupérez les données du formulaire
@@ -67,7 +92,6 @@ if (isset($_POST['submit_edit_astronaute'])) {
     $etat_sante = $_POST['edit_etat_sante'];
     $taille_astronaute = $_POST['edit_taille'];
     $poids_astronaute = $_POST['edit_poids'];
-
     // Requête SQL de mise à jour
     $sql = "UPDATE Astronautes SET nom=?, etat_sante=?, taille=?, poids=? WHERE id=?";
     $stmt = $conn->prepare($sql);
@@ -80,6 +104,9 @@ if (isset($_POST['submit_edit_astronaute'])) {
         echo "Erreur lors de la mise à jour : " . $stmt->error;
     }
 }
+
+
+
 // Compteur pour les planetes
 if ($conn->connect_error) {
     die("Échec de la connexion à la base de données : " . $conn->connect_error);

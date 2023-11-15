@@ -80,7 +80,7 @@ include "../database/dbConnect.php";
                                         <tr>
                                             <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nom</th>
                                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Etat de santé</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Taille</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Taille </th>
                                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">poids</th>
                                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Action</th></tr>
                                         </thead>
@@ -89,15 +89,15 @@ include "../database/dbConnect.php";
                                         <?php while ($row = $result_astronautes->fetch_assoc()) : ?>
                                             <tr class="odd">
                                                 <td class="dtr-control sorting_1" tabindex="0"><?php echo $row['nom']; ?></td>
-                                                <td><?php echo $row['etat_sante']; ?></td>
-                                                <td><?php echo $row['taille']; ?></td>
-                                                <td><?php echo $row['poids']; ?></td>
+                                                <td><?php echo $row['etat_sante'];  ?></td>
+                                                <td><?php echo $row['taille']. ' cm' ?></td>
+                                                <td><?php echo $row['poids'].' Kg'?></td>
 
                                                 <td>
                                                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" style="display:inline;">
                                                         <input type="hidden" name="operation_astronaute" value="delete">
                                                         <input type="hidden" name="astronaute_id" value="<?php echo $row['id']; ?>">
-                                                        <button type="submit" name="submit_astronaute"> <i class="fas fa-trash-alt"></i></button>
+                                                        <button type="submit" name="submit_astronaute"><i class="fas fa-trash-alt"></i></button>
                                                     </form>
                                                     <a href="#" onclick="openEditModal('<?php echo $row['id']; ?>', '<?php echo $row['nom']; ?>', '<?php echo $row['etat_sante']; ?>', '<?php echo $row['taille']; ?>', '<?php echo $row['poids']; ?>')"><i class="fas fa-edit"></i></a>
                                                 </td>

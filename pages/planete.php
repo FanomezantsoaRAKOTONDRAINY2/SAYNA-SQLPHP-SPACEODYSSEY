@@ -80,8 +80,8 @@ include "../database/dbConnect.php";
                                 <?php while ($row = $result_planetes->fetch_assoc()) : ?>
                                     <tr class="odd">
                                         <td class="dtr-control sorting_1" tabindex="0"><?php echo $row['nom']; ?></td>
-                                        <td><?php echo $row['circonference']; ?></td>
-                                        <td><?php echo $row['distance_terre']; ?></td>
+                                        <td><?php echo $row['circonference']. ' Km' ?></td>
+                                        <td><?php echo $row['distance_terre']. ' Km' ?></td>
                                         <td><?php echo $row['documentation']; ?></td>
                                         <td>
                                             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" style="display:inline;">
@@ -135,7 +135,16 @@ include "../database/dbConnect.php";
 <?php
 include "../html/footer.php"
 ?>
-
-
+<script>
+  function openEditModal(id, nom, circonference, distance, documentation) {
+    document.getElementById('edit_planete_id').value = id;
+    document.getElementById('edit_nom').value = nom;
+    document.getElementById('edit_circonference').value = circonference;
+    document.getElementById('edit_distance').value = distance;
+    document.getElementById('edit_documentation').value = documentation;
+    $('#editModal').modal('show');
+  }
+  
+</script>  
 
 
